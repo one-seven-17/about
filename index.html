@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | one-seven</title>
+    <style>
+        /* Import the font from zsfcat */
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Share Tech Mono', monospace;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        h1 {
+            font-size: 3em;
+            letter-spacing: 2px;
+            margin: 0 0 10px 0;
+            font-weight: normal;
+            text-transform: uppercase;
+        }
+        
+        h2 {
+            font-size: 1.8em;
+            font-weight: normal;
+            margin-top: 40px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #888;
+            font-size: 1.2em;
+            margin-top: 5px;
+        }
+        
+        .content {
+            margin: 40px 0;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #fff;
+            text-decoration: none;
+            border: 1px solid #333;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            border-color: #fff;
+            background-color: #111;
+        }
+        
+        .footer {
+            margin-top: 60px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #444;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+        
+        .blinker {
+            animation: blink 1s step-start infinite;
+            color: #fff;
+        }
+        
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        
+        /* Simple terminal effect */
+        .terminal {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 0.8em;
+            color: #444;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.2em;
+            }
+            
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>About 1:7</h1>
+            <div class="subtitle">(/wən-ˈsevən/)</div>
+        </div>
+        
+        <div class="content">
+            <h2>What is 1:7?</h2>
+            <p>1:7 is a network of specialized chat rooms focused on meaningful discussion of specific topics. We believe in creating spaces where people can engage in substantive conversations without the noise and distraction of general social platforms.</p>
+            
+            <h2>Our Philosophy</h2>
+            <p>In an age of information overload, we value focused discourse. Each room in our network is dedicated to a specific subject area, allowing participants to dive deep into topics that matter to them.</p>
+            
+            <h2>Room Guidelines</h2>
+            <p>All rooms follow our core principles:</p>
+            <p>
+                - Respectful dialogue<br>
+                - Evidence-based discussion<br>
+                - Topic-focused conversations<br>
+                - No spam or low-effort content<br>
+                - Privacy and anonymity respected
+            </p>
+            
+            <h2>Technical Details</h2>
+            <p>Our platform is built on simple, open web technologies to ensure accessibility and longevity. We prioritize function over flashy features, creating spaces optimized for text-based conversation.</p>
+            
+            <h2>Contact</h2>
+            <p>To request the creation of a new public room or for other inquiries, contact us at:<br>
+            <span style="color: #888;">one.seven.seventeen@proton.me</span></p>
+            
+            <a href="index.html" class="back-link">← Return to Main</a>
+        </div>
+        
+        <div class="footer">
+            <p>1:7 | Established: <span id="established"></span></p>
+            <p>Connected: <span id="visitor-count">1</span> local visits<span class="blinker">_</span></p>
+        </div>
+    </div>
+
+    <div class="terminal">
+        [1:7@about ~]$ status --verbose
+    </div>
+
+    <script>
+        // Set established date
+        document.getElementById('established').textContent = new Date().getFullYear();
+        
+        // Simple visitor counter (using localStorage)
+        let visitorCount = localStorage.getItem('visitorCount');
+        if (!visitorCount) {
+            visitorCount = Math.floor(Math.random() * 10) + 1;
+        } else {
+            visitorCount = parseInt(visitorCount) + 1;
+        }
+        localStorage.setItem('visitorCount', visitorCount);
+        document.getElementById('visitor-count').textContent = visitorCount;
+        
+        // Add a subtle typing effect to the terminal
+        const terminal = document.querySelector('.terminal');
+        let terminalText = terminal.textContent;
+        terminal.textContent = '';
+        
+        let charIndex = 0;
+        function typeTerminal() {
+            if (charIndex < terminalText.length) {
+                terminal.textContent += terminalText.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeTerminal, 50);
+            }
+        }
+        
+        // Start typing after a delay
+        setTimeout(typeTerminal, 1000);
+    </script>
+</body>
+</html>
